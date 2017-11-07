@@ -1,0 +1,25 @@
+sudo: required
+
+language: c
+
+matrix:
+  include:
+    - env: TEST_SUITE=testinstall GAPPKG=no
+#    - env: TEST_SUITE=testinstall GAPPKG=auto
+#    - env: TEST_SUITE=testinstall GAPPKG=all
+
+    - env: TEST_SUITE=testbugfix GAPPKG=no
+#    - env: TEST_SUITE=testbugfix GAPPKG=auto
+#    - env: TEST_SUITE=testbugfix GAPPKG=all
+
+services:
+  - docker
+
+before_install:
+- docker pull gapsystem/gap-docker-master
+- export DOCKER_COMMAND="\"cd /home/gap/inst/gap-master/; export TEST_SUITE=${TEST_SUITE}; export GAPPKG=${GAPPKG}; sudo wget https://raw.githubusercontent.com/gap-system/gap-docker-master-testsuite/master/ci.sh; sudo chmod u+x ci.sh ; sudo ./ci.sh\""
+- echo $DOCKER_COMMAND
+
+script:
+    - docker version
+    - docker run -t gapsystem/gap-docker-master /bin/sh -c `echo $DOCKER_COMMAND`
