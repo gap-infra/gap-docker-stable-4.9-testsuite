@@ -10,17 +10,30 @@ SRCDIR=${SRCDIR:-$PWD}
 GAP="bin/gap.sh --quitonbreak -q -A -x 80 -r -m 100m -o 1g -K 2g"
 GAPAuto="bin/gap.sh --quitonbreak -q -x 80 -r -m 100m -o 1g -K 2g"
 
-echo $TEST_SUITE
-echo $GAPPKG
+echo SRCDIR    : $SRCDIR
+echo TEST_SUITE: $TEST_SUITE
+echo GAPPKG    : $GAPPKG
+
+cd /home/gap/inst/gap-master/
 
 case ${GAPPKG} in
 no)
-    $GAP <(echo 'TestDirectory( [ DirectoriesLibrary( "tst/testbugfix" ) ], rec(exitGAP := true) ); FORCE_QUIT_GAP(1);')
+    $GAP <<GAPInput
+        TestDirectory( [ DirectoriesLibrary( "tst/${TEST_SUITE}" ) ], rec(exitGAP := true) );
+        FORCE_QUIT_GAP(1);
+GAPInput
     ;;
 auto)
-    $GAPAuto <(echo 'TestDirectory( [ DirectoriesLibrary( "tst/testbugfix" ) ], rec(exitGAP := true) ); FORCE_QUIT_GAP(1);')
+    $GAPAuto <<GAPInput
+        TestDirectory( [ DirectoriesLibrary( "tst/${TEST_SUITE}" ) ], rec(exitGAP := true) );
+        FORCE_QUIT_GAP(1);
+GAPInput
     ;;
-all )
-    $GAP <(echo 'LoadAllPackages(); TestDirectory( [ DirectoriesLibrary( "tst/testbugfix" ) ], rec(exitGAP := true) ); FORCE_QUIT_GAP(1);')
+all)
+    $GAP <<GAPInput
+        LoadAllPackages();
+        TestDirectory( [ DirectoriesLibrary( "tst/${TEST_SUITE}" ) ], rec(exitGAP := true) );
+        FORCE_QUIT_GAP(1);
+GAPInput
     ;;    
 esac;
