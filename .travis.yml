@@ -16,9 +16,9 @@ matrix:
     - env: TEST_SUITE=teststandard GAPPKG=auto
     - env: TEST_SUITE=teststandard GAPPKG=all
 
-    - env: TEST_SUITE=testextra GAPPKG=no
-    - env: TEST_SUITE=testextra GAPPKG=auto
-    - env: TEST_SUITE=testextra GAPPKG=all
+#    - env: TEST_SUITE=testextra GAPPKG=no
+#    - env: TEST_SUITE=testextra GAPPKG=auto
+#    - env: TEST_SUITE=testextra GAPPKG=all
 
 services:
   - docker
