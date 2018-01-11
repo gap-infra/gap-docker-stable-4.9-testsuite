@@ -14,7 +14,7 @@ echo SRCDIR    : $SRCDIR
 echo TEST_SUITE: $TEST_SUITE
 echo GAPPKG    : $GAPPKG
 
-cd /home/gap/inst/gap-master/
+cd /home/gap/inst/gap-stable-4.9/
 
 case ${GAPPKG} in
 no)

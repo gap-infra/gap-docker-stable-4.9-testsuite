@@ -24,8 +24,8 @@ services:
   - docker
 
 before_install:
-- docker pull gapsystem/gap-docker-master
+- docker pull gapsystem/gap-docker-stable-4.9
 
 script:
     - docker version
-    - docker run -v $PWD:/home/gap/travis/ gapsystem/gap-docker-master /bin/sh -c "TEST_SUITE=${TEST_SUITE} GAPPKG=${GAPPKG} TERM=dumb LANG=en_GB.UTF-8 /home/gap/travis/ci.sh"
+    - docker run -v $PWD:/home/gap/travis/ gapsystem/gap-docker-stable-4.9 /bin/sh -c "TEST_SUITE=${TEST_SUITE} GAPPKG=${GAPPKG} TERM=dumb LANG=en_GB.UTF-8 /home/gap/travis/ci.sh"
