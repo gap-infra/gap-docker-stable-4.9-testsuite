@@ -16,9 +16,14 @@ matrix:
     - env: TEST_SUITE=teststandard GAPPKG=auto
     - env: TEST_SUITE=teststandard GAPPKG=all
 
-#    - env: TEST_SUITE=testextra GAPPKG=no
-#    - env: TEST_SUITE=testextra GAPPKG=auto
-#    - env: TEST_SUITE=testextra GAPPKG=all
+#   - env: TEST_SUITE=testextra GAPPKG=no
+#   - env: TEST_SUITE=testextra GAPPKG=auto
+#   - env: TEST_SUITE=testextra GAPPKG=all
+
+    - env: TEST_SUITE=testpackagesload GAPPKG=single
+    - env: TEST_SUITE=testpackagesload GAPPKG=singleonlyneeded
+    - env: TEST_SUITE=testpackagesload GAPPKG=all
+    - env: TEST_SUITE=testpackagesload GAPPKG=allreversed
 
 services:
   - docker
