@@ -34,3 +34,7 @@ before_install:
 script:
     - docker version
     - docker run -v $PWD:/home/gap/travis/ gapsystem/gap-docker-stable-4.9 /bin/sh -c "TEST_SUITE=${TEST_SUITE} GAPPKG=${GAPPKG} TERM=dumb LANG=en_GB.UTF-8 /home/gap/travis/ci.sh"
+
+notifications:
+  slack:
+    secure: A6unX9z6/c7eBo5WALJE+oM360NePPR7VdgdBS8QSWNalQEqcQe8Dy9DusuTqaAdM/C3CitCzeJNrfE1Z2NCD8OSoPdPs7RyqBTm4X+9B94RLzKU3jI00WKwSk8eYFNiEr46FXcogW1VnBIsV08A1WGkOQ5vSOdiZsyELCcWeuKl6HeqC0ysxZCVUkNdfgmKppbXh7b54kL5YQqcXa9OnDcGzdCcKjbD/zCX+NMZMBqFdSr7GJWxe+mfqeERKZBrsfHUgYCXa7GDd+x/E0vvYVMc/RAcTKpCkVBVDd02METLlEQtXSFCaQvMFbJfQ2NE3lI53uh+9O6sIIexBe/koQG5+BTJI9gYuLVDOfljKyIpZHSwiarmTCT109Lyv0lkY70/gyk/FWV7nLN/5hCo/4O3RKcj4j1TYjfVCVods0WWUyGrGxuLyAs7ukacBTIDbb0YCLHE6BNRbPQmDxL7+Mgtsv38o1CjruKD9Cz6bRJgfRw3/T9GnSzIe2R6AwruZPj8DRdGWxXe8MCVIRbi0Nb9dS6xDbj2aZydFlPcLx78Z1VT21zEolCoU50Eq+sAQKaeLnv/br0qKFYowLRnkC4YY3oGf4888JQdCR9YMDMv0Hq9hWPdcfZEH7QWa8BvFcNoUg4QnZZjMrYpH3jwWlJa+PE+LJReyuuR18j0DFE=
